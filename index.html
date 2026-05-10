@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiempo y Vida</title>
+  <link rel="stylesheet" href="/Tiempo-y-vida/style.css" />
+</head>
+<body>
+  <div class="bg"></div>
 
+  <!-- Partículas de fondo -->
+  <canvas id="particles"></canvas>
+
+  <main class="page">
+    <section class="hero glass">
+
+      <!-- Portada con hover card -->
+      <div class="cover-wrap">
+        <div class="cover-card">
+          <img src="/Tiempo-y-vida/assets/images/portada-pasta blanda.jpg" alt="Portada del libro" class="cover" />
+          <div class="cover-overlay">
+            <p class="overlay-synopsis">
+              Una historia de amor, misterio y decisiones que cambian todo.
+              Dos vidas atadas por el tiempo… ¿podrán escapar de su destino?
+            </p>
+            <div class="overlay-stars">
+              <span class="star" style="--d:0">★</span>
+              <span class="star" style="--d:1">★</span>
+              <span class="star" style="--d:2">★</span>
+              <span class="star" style="--d:3">★</span>
+              <span class="star" style="--d:4">★</span>
+            </div>
+            <p class="overlay-label">Christian Yandel</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-text">
+        <p class="eyebrow">Bienvenido a mi libro</p>
+        <h1 id="bookTitle"></h1>
+
+        <!-- Cita flotante aleatoria -->
+        <p class="floating-quote" id="floatingQuote"></p>
+
+        <p class="subtitle">
+          Una historia hecha para quienes buscan una lectura con corazón, misterio y estilo.
+        </p>
+
+        <div class="music-row">
+          <div class="music-btn-wrap">
+            <button class="music-btn" data-audio="/Tiempo-y-vida/assets/music/1 am [8-_7gfQCvY4].mp3">
+              <img src="/Tiempo-y-vida/assets/icons/headphones-solid-full.svg" alt="Headphones" class="music-icon">
+              Chill 1
+            </button>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar"></div>
+            </div>
+          </div>
+
+          <div class="music-btn-wrap">
+            <button class="music-btn" data-audio="/Tiempo-y-vida/assets/music/Nujabes - Light on the land [Official Audio] [0qR3B1i3FBk].mp3">
+              <img src="/Tiempo-y-vida/assets/icons/headphones-solid-full.svg" alt="Headphones" class="music-icon">
+              Chill 2
+            </button>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar"></div>
+            </div>
+          </div>
+
+          <div class="music-btn-wrap">
+            <button class="music-btn" data-audio="/Tiempo-y-vida/assets/music/Rainy forest [xsrei0AatMc].mp3">
+              <img src="/Tiempo-y-vida/assets/icons/deezer-brands-solid-full.svg" alt="Deezer" class="music-icon">
+              Chill 3
+            </button>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section glass">
+      <h2>Segunda Portada + Video Promocional</h2>
+      <a href="https://youtube.com/shorts/qdnCFAXsSNU?si=oFtMidv4wLNf-HtX" target="_blank" rel="noopener noreferrer" class="video-link">
+        <img src="/Tiempo-y-vida/assets/images/portada pasta dura.jpg" alt="Segunda Portada" class="video-poster" />
+      </a>
+    </section>
+
+    <section class="links-section glass">
+      <h2>Accesos rápidos</h2>
+
+      <a class="link-btn" href="https://www.amazon.com/dp/B0GDV7CG6M" target="_blank" rel="noopener noreferrer">
+        <img src="/Tiempo-y-vida/assets/icons/amazon-brands-solid-full.svg" alt="Amazon">
+        Ver en Amazon
+      </a>
+
+      <a class="link-btn" href="https://www.wattpad.com/story/403445678-tiempo-y-vida" target="_blank" rel="noopener noreferrer">
+        <img src="/Tiempo-y-vida/assets/icons/w-solid-full.svg" alt="Wattpad">
+        Leer en Wattpad
+      </a>
+
+      <a class="link-btn" href="https://www.instagram.com/yandellvillalobos?igsh=NGljMmgwbG8yNGlp&utm_source=qr" target="_blank" rel="noopener noreferrer">
+        <img src="/Tiempo-y-vida/assets/icons/instagram-brands-solid-full.svg" alt="Instagram">
+        Instagram del autor
+      </a>
+
+      <a class="link-btn" href="https://drive.google.com/file/d/163St6h7R6JfIw5BI8gP_7hRY0-RrR2IX/view?pli=1" target="_blank" rel="noopener noreferrer">
+        <img src="/Tiempo-y-vida/assets/icons/book-solid-full.svg" alt="Adelanto">
+        Ver adelanto
+      </a>
+
+      <details class="info-box">
+        <summary>
+          <img src="/Tiempo-y-vida/assets/icons/exclamation-solid-full.svg" alt="Información" class="exclamation-icon">
+          Información
+        </summary>
+        <p>
+          Esta pagina esta creada con el fin de poder obtener reseñas gratuitas sobre mi libro.
+          Si presionas el botón del adelanto, te abrirá un archivo word, allí podrás leer una pequeña parte del libro.
+          Si presionas "Recibir libro completo" Te abrirá una pagina para poder responder que te pareció lo que leíste. al terminar el formulario, podrás hacer click, en el drive, del libro completo.
+        </p>
+      </details>
+
+      <a class="link-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSds9KhUy895AvtsV58eeBa0yp60gaUyJN4Gl2yR_fSJW6jj8w/alreadyresponded?pli=1&pli=1" target="_blank" rel="noopener noreferrer">
+        <img src="/Tiempo-y-vida/assets/icons/file-pdf-solid-full.svg" alt="PDF">
+        Recibir libro completo
+      </a>
+
+      <a class="link-btn secondary" href="https://linktr.ee/ChristianYandel" target="_blank" rel="noopener noreferrer">
+        <img src="/Tiempo-y-vida/assets/icons/l-solid-full.svg" alt="Linktree">
+        Volver a Linktree
+      </a>
+    </section>
+  </main>
+
+  <audio id="audioPlayer" preload="auto"></audio>
+  <script src="/Tiempo-y-vida/script.js"></script>
+</body>
+</html>
