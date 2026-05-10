@@ -1,1 +1,395 @@
+:root{
+  --bg: #08111d;
+  --card: rgba(12, 18, 30, 0.52);
+  --border: rgba(255,255,255,0.14);
+  --text: #f5f7ff;
+  --muted: rgba(245,247,255,0.78);
+  --accent: #ff7ab6;
+  --accent2: #8fd3ff;
+  --shadow: 0 20px 60px rgba(0,0,0,.35);
+}
 
+*{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Fondo ── */
+.bg{
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(10,15,30,.82), rgba(12,10,24,.72)),
+    url("/Tiempo-y-vida/assets/images/PC-Wallpaper-Aesthetic-Free-Download.jpg") center/cover no-repeat;
+  filter: saturate(1.1);
+  transform: scale(1.02);
+  z-index: -2;
+}
+
+/* ── Canvas de partículas ── */
+#particles{
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ── Layout ── */
+.page{
+  width: min(980px, 92vw);
+  margin: 0 auto;
+  padding: 32px 0 48px;
+  display: grid;
+  gap: 22px;
+}
+
+.glass{
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 28px;
+}
+
+/* ── Hero ── */
+.hero{
+  padding: 26px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 22px;
+  align-items: center;
+}
+
+/* ── Cover con hover card ── */
+.cover-wrap{
+  display: flex;
+  justify-content: center;
+}
+
+.cover-card{
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  border-radius: 22px;
+  overflow: hidden;
+  animation: float 4s ease-in-out infinite;
+  box-shadow: 0 18px 40px rgba(0,0,0,.45);
+  cursor: pointer;
+}
+
+.cover{
+  width: 100%;
+  display: block;
+  border-radius: 22px;
+  transition: transform .45s ease;
+}
+
+.cover-card:hover .cover{
+  transform: scale(1.06);
+}
+
+.cover-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(8,10,20,.82) 0%, rgba(20,10,35,.92) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity .4s ease;
+  border-radius: 22px;
+  text-align: center;
+}
+
+.cover-card:hover .cover-overlay{
+  opacity: 1;
+}
+
+.overlay-synopsis{
+  margin: 0;
+  font-size: .85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.overlay-stars{
+  display: flex;
+  gap: 4px;
+}
+
+.star{
+  color: #ffd166;
+  font-size: 1.3rem;
+  opacity: 0;
+  transform: translateY(6px);
+  display: inline-block;
+  transition: opacity .3s ease calc(var(--d) * 0.07s),
+              transform .3s ease calc(var(--d) * 0.07s);
+}
+
+.cover-card:hover .star{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.overlay-label{
+  margin: 0;
+  font-size: .75rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent2);
+}
+
+@keyframes float{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-8px); }
+}
+
+/* ── Hero texto ── */
+.eyebrow{
+  margin: 0 0 8px;
+  color: var(--accent2);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: .8rem;
+}
+
+h1{
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1.02;
+  min-height: 1.1em; /* reserva espacio durante typewriter */
+}
+
+/* Cursor typewriter */
+h1::after{
+  content: '|';
+  color: var(--accent);
+  animation: blink .75s step-end infinite;
+}
+
+h1.done::after{
+  display: none;
+}
+
+@keyframes blink{
+  0%,100%{ opacity:1 }
+  50%{ opacity:0 }
+}
+
+/* ── Cita flotante ── */
+.floating-quote{
+  margin: 10px 0 0;
+  font-style: italic;
+  font-size: .88rem;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .8s ease, transform .8s ease;
+  min-height: 1.3em;
+}
+
+.floating-quote.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.subtitle{
+  margin: 12px 0 0;
+  color: var(--muted);
+  max-width: 54ch;
+}
+
+/* ── Botones de música ── */
+.music-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.music-btn-wrap{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.music-btn,
+.link-btn{
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.08);
+  color: var(--text);
+  text-decoration: none;
+  transition: .25s ease;
+}
+
+.music-btn{
+  padding: 12px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.music-icon{
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* ── Barra de progreso de música ── */
+.progress-bar-wrap{
+  height: 3px;
+  background: rgba(255,255,255,.12);
+  border-radius: 999px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.music-btn-wrap.playing .progress-bar-wrap{
+  opacity: 1;
+}
+
+.progress-bar{
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  border-radius: 999px;
+  transition: width .25s linear;
+}
+
+/* ── Link buttons ── */
+.link-btn{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  font-weight: 700;
+}
+
+.link-btn img{
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.exclamation-icon{
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-right: 4px;
+}
+
+.music-btn:hover,
+.link-btn:hover{
+  transform: translateY(-3px) scale(1.01);
+  background: rgba(255,255,255,.14);
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+
+/* ── Video ── */
+.video-section{
+  padding: 22px;
+}
+
+.video-section h2{
+  margin: 0 0 16px;
+  font-size: 1.15rem;
+}
+
+.video-link{
+  display: block;
+  text-decoration: none;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: .25s ease;
+}
+
+.video-poster{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  transition: .25s ease;
+}
+
+.video-link:hover .video-poster{
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+
+/* ── Links section ── */
+.links-section{
+  display: grid;
+  gap: 12px;
+  padding: 22px;
+}
+
+.links-section h2{
+  margin: 0 0 16px;
+  font-size: 1.15rem;
+}
+
+.link-btn.secondary{
+  opacity: .86;
+}
+
+/* ── Info box ── */
+.info-box summary{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 14px 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.08);
+  border-radius: 18px;
+  list-style: none;
+  transition: .25s ease;
+}
+
+.info-box summary:hover{
+  background: rgba(255,255,255,.14);
+}
+
+.info-box p{
+  padding: 12px 16px;
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.6;
+  background: rgba(255,255,255,.04);
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+/* ── Responsive ── */
+@media (max-width: 780px){
+  .hero{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .music-row{
+    justify-content: center;
+  }
+  .subtitle{
+    margin-inline: auto;
+  }
+  .floating-quote{
+    margin-inline: auto;
+  }
+}
