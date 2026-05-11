@@ -183,3 +183,53 @@
     activeWrap = null;
   });
 })();
+(function () {
+  const naturalezas = [
+    {
+      icono: '/Mi-pagina-web/assets/naturaleza/Explorador.svg',
+      nombre: 'Explorador',
+      texto: 'Vas donde otros dudan, porque tu alma florece cuando descubre.'
+    },
+    {
+      icono: '/Mi-pagina-web/assets/naturaleza/Guerrero.svg',
+      nombre: 'Guerrero',
+      texto: 'Luchas por lo que quieres, pero nunca olvides que también mereces tu propia paz.'
+    },
+    {
+      icono: '/Mi-pagina-web/assets/naturaleza/protector.svg',
+      nombre: 'Protector',
+      texto: 'Defiendes a quienes amas, pero tu corazón también merece refugio.'
+    },
+    {
+      icono: '/Mi-pagina-web/assets/naturaleza/mediador.svg',
+      nombre: 'Mediador',
+      texto: 'Tu fuerza está en calmar, unir y darle forma al equilibrio.'
+    },
+    {
+      icono: '/Mi-pagina-web/assets/naturaleza/Sabio.svg',
+      nombre: 'Sabio',
+      texto: 'Ves más allá de la prisa; tu poder está en comprender antes de decidir.'
+    },
+  ];
+
+  const btn       = document.getElementById('naturaleza-btn');
+  const resultado = document.getElementById('naturaleza-resultado');
+  const icono     = document.getElementById('naturaleza-icono');
+  const nombre    = document.getElementById('naturaleza-nombre');
+  const texto     = document.getElementById('naturaleza-texto');
+
+  btn.addEventListener('click', () => {
+    const eleccion = naturalezas[Math.floor(Math.random() * naturalezas.length)];
+
+    icono.src        = eleccion.icono;
+    icono.alt        = eleccion.nombre;
+    nombre.textContent = eleccion.nombre;
+    texto.textContent  = eleccion.texto;
+
+    // Reinicia la animación quitando y volviendo a poner la clase
+    resultado.classList.add('hidden');
+    requestAnimationFrame(() => {
+      resultado.classList.remove('hidden');
+    });
+  });
+})();
