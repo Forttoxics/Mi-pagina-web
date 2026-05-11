@@ -191,7 +191,7 @@
       texto: 'Vas donde otros dudan, porque tu alma florece cuando descubre.'
     },
     {
-      icono: '/Mi-pagina-web/assets/iconoa/naturaleza/sword.svg',
+      icono: '/Mi-pagina-web/assets/iconos/naturaleza/sword.svg',
       nombre: 'Guerrero',
       texto: 'Luchas por lo que quieres, pero nunca olvides que también mereces tu propia paz.'
     },
