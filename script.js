@@ -186,27 +186,27 @@
 (function () {
   const naturalezas = [
     {
-      icono: '/Mi-pagina-web/assets/naturaleza/Explorador.svg',
+      icono: '/Mi-pagina-web/assets/iconos/naturaleza/Explorador.svg',
       nombre: 'Explorador',
       texto: 'Vas donde otros dudan, porque tu alma florece cuando descubre.'
     },
     {
-      icono: '/Mi-pagina-web/assets/naturaleza/Guerrero.svg',
+      icono: '/Mi-pagina-web/assets/iconoa/naturaleza/Guerrero.svg',
       nombre: 'Guerrero',
       texto: 'Luchas por lo que quieres, pero nunca olvides que también mereces tu propia paz.'
     },
     {
-      icono: '/Mi-pagina-web/assets/naturaleza/protector.svg',
+      icono: '/Mi-pagina-web/assets/iconos/naturaleza/protector.svg',
       nombre: 'Protector',
       texto: 'Defiendes a quienes amas, pero tu corazón también merece refugio.'
     },
     {
-      icono: '/Mi-pagina-web/assets/naturaleza/mediador.svg',
+      icono: '/Mi-pagina-web/assets/iconos/naturaleza/mediador.svg',
       nombre: 'Mediador',
       texto: 'Tu fuerza está en calmar, unir y darle forma al equilibrio.'
     },
     {
-      icono: '/Mi-pagina-web/assets/naturaleza/Sabio.svg',
+      icono: '/Mi-pagina-web/assets/iconos/naturaleza/Sabio.svg',
       nombre: 'Sabio',
       texto: 'Ves más allá de la prisa; tu poder está en comprender antes de decidir.'
     },
