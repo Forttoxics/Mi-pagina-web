@@ -196,12 +196,12 @@
       texto: 'Luchas por lo que quieres, pero nunca olvides que también mereces tu propia paz.'
     },
     {
-      icono: '/Mi-pagina-web/assets/iconos/naturaleza/protector.svg',
+      icono: '/Mi-pagina-web/assets/iconos/naturaleza/Protector.svg',
       nombre: 'Protector',
       texto: 'Defiendes a quienes amas, pero tu corazón también merece refugio.'
     },
     {
-      icono: '/Mi-pagina-web/assets/iconos/naturaleza/mediador.svg',
+      icono: '/Mi-pagina-web/assets/iconos/naturaleza/Mediador.svg',
       nombre: 'Mediador',
       texto: 'Tu fuerza está en calmar, unir y darle forma al equilibrio.'
     },
