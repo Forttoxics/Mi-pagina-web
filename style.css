@@ -26,7 +26,7 @@ body{
   inset: 0;
   background:
     linear-gradient(120deg, rgba(10,15,30,.82), rgba(12,10,24,.72)),
-    url("/Tiempo-y-vida/assets/images/PC-Wallpaper-Aesthetic-Free-Download.jpg") center/cover no-repeat;
+    url("/Tiempo-y-vida/assets/imagenes/PC-Wallpaper-Aesthetic-Free-Download.jpg") center/cover no-repeat;
   filter: saturate(1.1);
   transform: scale(1.02);
   z-index: -2;
