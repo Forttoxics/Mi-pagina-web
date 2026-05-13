@@ -268,7 +268,7 @@
         { texto: 'Preguntas quién es',                      correcta: false },
       ],
       textoAcierto: 'Elegiste hablar. La lluvia no fue un obstáculo, sino la puerta de entrada a un encuentro histórico; ese hombre era Sócrates y en Tiempo y Vida, esa conversación se volvió un destello decisivo para Timit.',
-      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: 'Me llamo Sócrates, ¿Me conoces de algún lado, pequeño?', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
     },
 
     /* ── EVENTO 2: El reloj viejo ── */
@@ -294,7 +294,7 @@
         { texto: 'Pides ayuda',                      correcta: false },
       ],
       textoAcierto: 'Reescribir fue un pequeño sacrificio, pero también una victoria. En Tiempo y Vida, la escritura se vuelve una forma de disciplina, paciencia y crecimiento interior.',
-      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: 'Mi ortografia es horrible, escribí una página, y entiendo la mitad', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
     },
 
     /* ── EVENTO 4: La discusión familiar ── */
@@ -307,7 +307,7 @@
         { texto: 'Intentas calmar el ambiente con una frase', correcta: false },
       ],
       textoAcierto: 'Salir fue la respuesta de Timit; no para huir, sino para buscar aire, sentido y un camino propio dentro del conflicto.',
-      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: '¡Ya basta!! la luz del dia apenas nos acomapaña, no es tiempo de discutir', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
     },
 
     /* ── EVENTO 5: El fuego ── */
@@ -320,14 +320,14 @@
         { texto: 'Preguntas qué representa',    correcta: false },
       ],
       textoAcierto: 'El fuego no solo calienta: enseña. En el libro, el abuelo lo usa como símbolo de reflexión, energía y tiempo que se consume.',
-      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: 'La hoguera parece estar débil, sus llamas quieren apagarse', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
     },
 
   ];
 
-  /* ════════════════════════════
-     LÓGICA — no hace falta editar nada de aquí abajo
-     ════════════════════════════ */
+  /* ═══════
+     LÓGICA 
+     ═══════*/
 
   const iconoPuerta = '/Mi-pagina-web/assets/iconos/eventos/puerta.svg';
 
