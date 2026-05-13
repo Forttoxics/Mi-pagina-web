@@ -233,3 +233,167 @@
     });
   });
 })();
+/* ═══════════════════════════════════════
+   PEGA ESTO al final de tu script.js
+   ═══════════════════════════════════════ */
+
+(function () {
+
+  /* ── Textos para respuesta INCORRECTA (aleatorio entre los 4) ── */
+  const textosFallo = [
+    'Tu elección abrió un nuevo camino en la vida de Timit.',
+    'Tu reacción cambió la historia como la conocemos.',
+    'Estás destinado a crear tu propia historia.',
+    'La historia no coincide; una nueva línea temporal acaba de abrirse.',
+  ];
+
+  /* ══════════════════════════════════════════════════════
+     ESCENARIOS
+     Cada escenario tiene:
+       - escena        → texto de situación (italic arriba)
+       - opciones      → array de 4 objetos { texto, correcta }
+       - textoAcierto  → párrafo que aparece si elige bien
+       - extracto      → pon aquí el texto literal del libro
+                         (deja '' si todavía no lo tienes)
+     ══════════════════════════════════════════════════════ */
+  const escenarios = [
+
+    /* ── EVENTO 1: La lluvia / Sócrates ── */
+    {
+      escena: 'Estás herido bajo la lluvia. Una lámpara se enciende entre el agua. Un hombre de barba te observa con calma; parece misterioso, pero tranquilo.',
+      opciones: [
+        { texto: 'Conversas con él',                        correcta: true  },
+        { texto: 'Te vas sin decir nada',                   correcta: false },
+        { texto: 'Agradeces la compañía, pero guardas silencio', correcta: false },
+        { texto: 'Preguntas quién es',                      correcta: false },
+      ],
+      textoAcierto: 'Elegiste hablar. La lluvia no fue un obstáculo, sino la puerta de entrada a un encuentro histórico; ese hombre era Sócrates y en Tiempo y Vida, esa conversación se volvió un destello decisivo para Timit.',
+      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+    },
+
+    /* ── EVENTO 2: El reloj viejo ── */
+    {
+      escena: 'Te detienes frente a un reloj viejo. Sientes que el tiempo pesa más de lo normal.',
+      opciones: [
+        { texto: 'Lo observas con atención',        correcta: true  },
+        { texto: 'Lo ignoras y sigues caminando',   correcta: false },
+        { texto: 'Intentas arreglarlo',              correcta: false },
+        { texto: 'Preguntas por qué es tan importante', correcta: false },
+      ],
+      textoAcierto: 'Mirarlo fue entenderlo. El reloj no era solo un objeto, era una advertencia. En el libro, el tiempo aparece como algo que debe ser respetado, no perseguido.',
+      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+    },
+
+    /* ── EVENTO 3: El cuaderno vacío ── */
+    {
+      escena: 'Tienes un cuaderno vacío. Quieres escribir algo, pero la caligrafía te traiciona.',
+      opciones: [
+        { texto: 'Escribes de todos modos',          correcta: false },
+        { texto: 'Reescribes hasta que quede bien',  correcta: true  },
+        { texto: 'Cierras el cuaderno y lo dejas',   correcta: false },
+        { texto: 'Pides ayuda',                      correcta: false },
+      ],
+      textoAcierto: 'Reescribir fue un pequeño sacrificio, pero también una victoria. En Tiempo y Vida, la escritura se vuelve una forma de disciplina, paciencia y crecimiento interior.',
+      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+    },
+
+    /* ── EVENTO 4: La discusión familiar ── */
+    {
+      escena: 'Escuchas una discusión en casa. La tensión pesa más que cualquier ruido.',
+      opciones: [
+        { texto: 'Intervienes',                               correcta: false },
+        { texto: 'Te quedas callado',                         correcta: false },
+        { texto: 'Sales de la casa',                          correcta: true  },
+        { texto: 'Intentas calmar el ambiente con una frase', correcta: false },
+      ],
+      textoAcierto: 'Salir fue la respuesta de Timit; no para huir, sino para buscar aire, sentido y un camino propio dentro del conflicto.',
+      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+    },
+
+    /* ── EVENTO 5: El fuego ── */
+    {
+      escena: 'Un fuego arde frente a ti. Sientes que su luz responde al estado de tu mente.',
+      opciones: [
+        { texto: 'Te acercas',                  correcta: false },
+        { texto: 'Lo contemplas de lejos',      correcta: true  },
+        { texto: 'Intentas apagarlo',           correcta: false },
+        { texto: 'Preguntas qué representa',    correcta: false },
+      ],
+      textoAcierto: 'El fuego no solo calienta: enseña. En el libro, el abuelo lo usa como símbolo de reflexión, energía y tiempo que se consume.',
+      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+    },
+
+  ];
+
+  /* ════════════════════════════
+     LÓGICA — no hace falta editar nada de aquí abajo
+     ════════════════════════════ */
+
+  const iconoPuerta = '/Mi-pagina-web/assets/iconos/eventos/puerta.svg';
+
+  const elEscena      = document.getElementById('evento-escena');
+  const elPuertas     = document.getElementById('evento-puertas');
+  const elIntro       = document.getElementById('evento-intro');
+  const elResultado   = document.getElementById('evento-resultado');
+  const elResTexto    = document.getElementById('evento-resultado-texto');
+  const elExtracto    = document.getElementById('evento-extracto');
+  const elReiniciar   = document.getElementById('evento-reiniciar');
+
+  /* Mezcla array sin mutar el original */
+  function shuffle(arr) {
+    return [...arr].sort(() => Math.random() - 0.5);
+  }
+
+  /* Elige y renderiza un escenario aleatorio */
+  function cargarEscenario() {
+    const s = escenarios[Math.floor(Math.random() * escenarios.length)];
+    elEscena.textContent = s.escena;
+    elPuertas.innerHTML  = '';
+
+    const opcionesOrdenadas = shuffle(s.opciones);
+
+    opcionesOrdenadas.forEach(op => {
+      const btn = document.createElement('button');
+      btn.className = 'puerta-btn';
+      btn.innerHTML = `
+        <img src="${iconoPuerta}" alt="Puerta">
+        <span>${op.texto}</span>
+      `;
+      btn.addEventListener('click', () => mostrarResultado(op, s));
+      elPuertas.appendChild(btn);
+    });
+
+    /* Muestra intro, oculta resultado */
+    elIntro.style.display     = '';
+    elResultado.classList.add('hidden');
+  }
+
+  /* Muestra el resultado según acierto o fallo */
+  function mostrarResultado(opcion, escenario) {
+    elIntro.style.display = 'none';
+
+    if (opcion.correcta) {
+      elResTexto.textContent = escenario.textoAcierto;
+
+      if (escenario.extracto && escenario.extracto.trim() !== '') {
+        elExtracto.textContent = escenario.extracto;
+        elExtracto.classList.remove('hidden');
+      } else {
+        elExtracto.classList.add('hidden');
+      }
+    } else {
+      /* Texto de fallo aleatorio */
+      elResTexto.textContent = textosFallo[Math.floor(Math.random() * textosFallo.length)];
+      elExtracto.classList.add('hidden');
+    }
+
+    elResultado.classList.remove('hidden');
+  }
+
+  /* Botón reiniciar → nuevo escenario aleatorio */
+  elReiniciar.addEventListener('click', cargarEscenario);
+
+  /* Carga inicial */
+  cargarEscenario();
+
+})();
