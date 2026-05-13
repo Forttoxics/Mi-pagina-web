@@ -281,7 +281,7 @@
         { texto: 'Preguntas por qué es tan importante', correcta: false },
       ],
       textoAcierto: 'Mirarlo fue entenderlo. El reloj no era solo un objeto, era una advertencia. En el libro, el tiempo aparece como algo que debe ser respetado, no perseguido.',
-      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: 'el tiempo es valioso, y la vida depende de nuestras acciones, debes mantenerte consciente para lograr controlarla',
     },
 
     /* ── EVENTO 3: El cuaderno vacío ── */
