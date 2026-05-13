@@ -432,9 +432,6 @@ h1.done::after{
   from{ opacity:0; transform:translateY(10px); }
   to{   opacity:1; transform:translateY(0); }
 }
-/* ═══════════════════════════════════════
-   PEGA ESTO al final de tu style.css
-   ═══════════════════════════════════════ */
 
 #evento-section {
   padding: 28px;
