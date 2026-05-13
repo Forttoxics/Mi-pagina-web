@@ -432,3 +432,156 @@ h1.done::after{
   from{ opacity:0; transform:translateY(10px); }
   to{   opacity:1; transform:translateY(0); }
 }
+/* ═══════════════════════════════════════
+   PEGA ESTO al final de tu style.css
+   ═══════════════════════════════════════ */
+
+#evento-section {
+  padding: 28px;
+  display: grid;
+  gap: 18px;
+}
+
+#evento-titulo {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+  color: var(--accent2);
+  letter-spacing: .05em;
+}
+
+.evento-escena {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: .95rem;
+  margin: 0 0 24px;
+  font-style: italic;
+}
+
+/* ── Cuadrícula de puertas ── */
+.evento-puertas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.puerta-btn {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 18px;
+  padding: 18px 14px;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: .88rem;
+  font-weight: 600;
+  text-align: center;
+  transition: .25s ease;
+  line-height: 1.4;
+}
+
+.puerta-btn img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  opacity: .85;
+}
+
+.puerta-btn:hover {
+  background: rgba(255,255,255,.13);
+  border-color: var(--accent2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+}
+
+/* ── Resultado ── */
+.evento-resultado {
+  animation: fadeUp .55s ease forwards;
+  text-align: center;
+}
+
+.evento-resultado.hidden { display: none; }
+
+.evento-resultado-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.evento-puerta-icono {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px var(--accent));
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%,100% { filter: drop-shadow(0 0 10px var(--accent)); }
+  50%      { filter: drop-shadow(0 0 22px var(--accent2)); }
+}
+
+.evento-resultado-texto {
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.7;
+  max-width: 52ch;
+  margin: 0;
+}
+
+/* Extracto del libro */
+.evento-extracto {
+  border-left: 3px solid var(--accent);
+  margin: 4px auto;
+  padding: 12px 18px;
+  color: var(--text);
+  font-style: italic;
+  font-size: .88rem;
+  line-height: 1.7;
+  background: rgba(255,122,182,.07);
+  border-radius: 0 14px 14px 0;
+  max-width: 52ch;
+  text-align: left;
+}
+
+.evento-extracto.hidden { display: none; }
+
+/* Etiqueta "Del libro" */
+.evento-extracto::before {
+  content: '📖 Del libro:';
+  display: block;
+  font-style: normal;
+  font-size: .75rem;
+  letter-spacing: .08em;
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+/* Botón reiniciar */
+.evento-reiniciar-btn {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 10px 22px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: .88rem;
+  transition: .25s ease;
+  margin-top: 4px;
+}
+
+.evento-reiniciar-btn:hover {
+  background: rgba(255,255,255,.16);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 500px) {
+  .evento-puertas {
+    grid-template-columns: 1fr;
+  }
+}
