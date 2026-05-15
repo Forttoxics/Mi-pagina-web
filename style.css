@@ -168,7 +168,7 @@ h1{
   margin: 0;
   font-size: clamp(2rem, 4vw, 4rem);
   line-height: 1.02;
-  min-height: 1.1em; /* reserva espacio durante typewriter */
+  min-height: 1.1em;
 }
 
 /* Cursor typewriter */
@@ -210,7 +210,7 @@ h1.done::after{
   max-width: 54ch;
 }
 
-/* ── Botones de música ── */
+/* ── Botones de la música ── */
 .music-row{
   display: flex;
   flex-wrap: wrap;
@@ -271,7 +271,7 @@ h1.done::after{
   transition: width .25s linear;
 }
 
-/* ── Link buttons ── */
+/* ── Link de los botones ── */
 .link-btn{
   display: flex;
   align-items: center;
