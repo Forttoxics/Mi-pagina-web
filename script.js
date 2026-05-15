@@ -39,9 +39,7 @@
 })();
 
 
-/* ════════════════════════════════
-   3. PARTÍCULAS SUTILES EN EL FONDO
-   ════════════════════════════════ */
+/*PARTÍCULAS*/
 (function () {
   const canvas = document.getElementById('particles');
   const ctx = canvas.getContext('2d');
@@ -92,9 +90,7 @@
 })();
 
 
-/* ════════════════════════════════
-   4. REPRODUCTOR + BARRA DE PROGRESO
-   ════════════════════════════════ */
+/*REPRODUCTOR + BARRA DE PROGRESO*/
 (function () {
   const audioPlayer = document.getElementById('audioPlayer');
   const wraps       = document.querySelectorAll('.music-btn-wrap');
@@ -121,7 +117,7 @@
   }
 
   function activateWrap(wrap) {
-    // desactiva el anterior
+  
     if (activeWrap && activeWrap !== wrap) {
       activeWrap.classList.remove('playing');
       const prevBar = activeWrap.querySelector('.progress-bar');
@@ -160,7 +156,7 @@
         stopBar();
         updateBar(wrap);
 
-        // Resetear icono de todos, luego activar este
+       
         wraps.forEach(w => {
           const b = w.querySelector('.music-btn');
           if (b) b.textContent = b.textContent.replace('⏸', '🎵');
@@ -170,7 +166,7 @@
     });
   });
 
-  // Cuando la canción termina, resetear
+ 
   audioPlayer.addEventListener('ended', () => {
     if (activeWrap) {
       activeWrap.classList.remove('playing');
@@ -226,20 +222,15 @@
     nombre.textContent = eleccion.nombre;
     texto.textContent  = eleccion.texto;
 
-    // Reinicia la animación quitando y volviendo a poner la clase
     resultado.classList.add('hidden');
     requestAnimationFrame(() => {
       resultado.classList.remove('hidden');
     });
   });
 })();
-/* ═══════════════════════════════════════
-   PEGA ESTO al final de tu script.js
-   ═══════════════════════════════════════ */
 
 (function () {
 
-  /* ── Textos para respuesta INCORRECTA (aleatorio entre los 4) ── */
   const textosFallo = [
     'Tu elección abrió un nuevo camino en la vida de Timit.',
     'Tu reacción cambió la historia como la conocemos.',
@@ -247,15 +238,6 @@
     'La historia no coincide; una nueva línea temporal acaba de abrirse.',
   ];
 
-  /* ══════════════════════════════════════════════════════
-     ESCENARIOS
-     Cada escenario tiene:
-       - escena        → texto de situación (italic arriba)
-       - opciones      → array de 4 objetos { texto, correcta }
-       - textoAcierto  → párrafo que aparece si elige bien
-       - extracto      → pon aquí el texto literal del libro
-                         (deja '' si todavía no lo tienes)
-     ══════════════════════════════════════════════════════ */
   const escenarios = [
 
     /* ── EVENTO 1: La lluvia / Sócrates ── */
@@ -325,9 +307,7 @@
 
   ];
 
-  /* ═══════
-     LÓGICA 
-     ═══════*/
+  /*LÓGICA */
 
   const iconoPuerta = '/Mi-pagina-web/assets/iconos/eventos/puerta.svg';
 
@@ -339,12 +319,10 @@
   const elExtracto    = document.getElementById('evento-extracto');
   const elReiniciar   = document.getElementById('evento-reiniciar');
 
-  /* Mezcla array sin mutar el original */
   function shuffle(arr) {
     return [...arr].sort(() => Math.random() - 0.5);
   }
 
-  /* Elige y renderiza un escenario aleatorio */
   function cargarEscenario() {
     const s = escenarios[Math.floor(Math.random() * escenarios.length)];
     elEscena.textContent = s.escena;
@@ -363,12 +341,10 @@
       elPuertas.appendChild(btn);
     });
 
-    /* Muestra intro, oculta resultado */
     elIntro.style.display     = '';
     elResultado.classList.add('hidden');
   }
 
-  /* Muestra el resultado según acierto o fallo */
   function mostrarResultado(opcion, escenario) {
     elIntro.style.display = 'none';
 
@@ -382,7 +358,6 @@
         elExtracto.classList.add('hidden');
       }
     } else {
-      /* Texto de fallo aleatorio */
       elResTexto.textContent = textosFallo[Math.floor(Math.random() * textosFallo.length)];
       elExtracto.classList.add('hidden');
     }
@@ -390,10 +365,8 @@
     elResultado.classList.remove('hidden');
   }
 
-  /* Botón reiniciar → nuevo escenario aleatorio */
   elReiniciar.addEventListener('click', cargarEscenario);
 
-  /* Carga inicial */
   cargarEscenario();
 
 })();
