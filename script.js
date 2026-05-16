@@ -438,11 +438,147 @@
     elRangoDesc.textContent  = rango.desc;
 
     elFinal.classList.remove('hidden');
+    window.dispatchEvent(new CustomEvent('tv:juegoCompletado', {
+      detail: { puntos }
+    }));
   }
 
   elReiniciar.addEventListener('click', iniciar);
 
   /* Arranque */
   iniciar();
+
+})();
+
+(function () {
+
+  /* ════════════════════════════
+     CLAVES DE LOCALSTORAGE
+     ════════════════════════════ */
+  const KEY_PUNTOS      = 'tv_puntos';        // puntos acumulados
+  const KEY_CANJEADOS   = 'tv_canjeados';     // array de IDs canjeados
+  const KEY_ULTIMO_JUEGO = 'tv_ultimo_juego'; // timestamp del último juego completado
+
+  const MS_24H = 24 * 60 * 60 * 1000;
+
+  /* ════════════════════════════
+     HELPERS DE STORAGE
+     ════════════════════════════ */
+  function getPuntos() {
+    return parseInt(localStorage.getItem(KEY_PUNTOS) || '0', 10);
+  }
+
+  function setPuntos(n) {
+    localStorage.setItem(KEY_PUNTOS, String(n));
+  }
+
+  function getCanjeados() {
+    try {
+      return JSON.parse(localStorage.getItem(KEY_CANJEADOS) || '[]');
+    } catch { return []; }
+  }
+
+  function addCanjeado(id) {
+    const lista = getCanjeados();
+    if (!lista.includes(id)) lista.push(id);
+    localStorage.setItem(KEY_CANJEADOS, JSON.stringify(lista));
+  }
+
+  function puedeJugarHoy() {
+    const ultimo = parseInt(localStorage.getItem(KEY_ULTIMO_JUEGO) || '0', 10);
+    return Date.now() - ultimo > MS_24H;
+  }
+
+  function registrarJuegoCompletado() {
+    localStorage.setItem(KEY_ULTIMO_JUEGO, String(Date.now()));
+  }
+
+  function tiempoRestante() {
+    const ultimo = parseInt(localStorage.getItem(KEY_ULTIMO_JUEGO) || '0', 10);
+    const diff   = MS_24H - (Date.now() - ultimo);
+    if (diff <= 0) return null;
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    return `${h}h ${m}m`;
+  }
+
+  /* ════════════════════════════
+     ELEMENTOS DEL DOM — CANJE
+     ════════════════════════════ */
+  const elPuntosTotal    = document.getElementById('canje-puntos-total');
+  const elAvisoBloqueo   = document.getElementById('canje-aviso-bloqueo');
+
+  function actualizarPanelCanje() {
+    const pts = getPuntos();
+    elPuntosTotal.textContent = `${pts} pts disponibles`;
+
+    const canjeados = getCanjeados();
+    [1, 2, 3].forEach(id => {
+      const btn      = document.getElementById(`canje-btn-${id}`);
+      const card     = document.getElementById(`canje-card-${id}`);
+      const contenido = document.getElementById(`canje-texto-${id}`);
+      if (!btn) return;
+
+      if (canjeados.includes(id)) {
+        /* Ya canjeado — mostrar contenido, deshabilitar botón */
+        btn.textContent = '✅ Desbloqueado';
+        btn.classList.add('ya-canjeado');
+        btn.disabled = true;
+        card.classList.add('desbloqueada');
+        contenido.classList.remove('hidden');
+      } else {
+        const costo = parseInt(btn.dataset.costo, 10);
+        btn.disabled = pts < costo;
+      }
+    });
+
+    /* Aviso si el juego está bloqueado */
+    const restante = tiempoRestante();
+    if (restante && !puedeJugarHoy()) {
+      elAvisoBloqueo.textContent = `⏳ Podrás ganar más puntos en ${restante}. ¡Vuelve mañana!`;
+      elAvisoBloqueo.classList.remove('hidden');
+    } else {
+      elAvisoBloqueo.classList.add('hidden');
+    }
+  }
+
+  /* ════════════════════════════
+     BOTONES DE CANJE
+     ════════════════════════════ */
+  [1, 2, 3].forEach(id => {
+    const btn = document.getElementById(`canje-btn-${id}`);
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+      const costo     = parseInt(btn.dataset.costo, 10);
+      const ptsActual = getPuntos();
+
+      if (ptsActual < costo) return;
+
+      setPuntos(ptsActual - costo);
+      addCanjeado(id);
+      actualizarPanelCanje();
+    });
+  });
+
+  /* ════════════════════════════
+     INTEGRACIÓN CON EL MINIJUEGO
+     Al terminar los 5 eventos, sumar puntos al localStorage
+     y bloquear el juego por 24h
+     ════════════════════════════ */
+
+  /* Esperamos a que el minijuego dispare un evento custom */
+  window.addEventListener('tv:juegoCompletado', (e) => {
+    const ganados = e.detail.puntos;
+    if (!puedeJugarHoy()) return; // ya jugó hoy, no suma
+
+    const nuevos = getPuntos() + ganados;
+    setPuntos(nuevos);
+    registrarJuegoCompletado();
+    actualizarPanelCanje();
+  });
+
+  /* Carga inicial */
+  actualizarPanelCanje();
 
 })();
