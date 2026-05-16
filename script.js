@@ -1,6 +1,4 @@
-/* ════════════════════════════════
-   1. TYPEWRITER — título "TIEMPO Y VIDA"
-   ════════════════════════════════ */
+/* "TIEMPO Y VIDA"*/
 (function () {
   const el = document.getElementById('bookTitle');
   const text = 'TIEMPO Y VIDA';
@@ -19,10 +17,7 @@
   setTimeout(type, 400); // pequeño delay para que se note al cargar
 })();
 
-
-/* ════════════════════════════════
-   2. CITA FLOTANTE ALEATORIA
-   ════════════════════════════════ */
+//Cita flotante
 (function () {
   const quotes = [
     '"El tiempo no espera a nadie, pero la vida sí."',
@@ -263,9 +258,7 @@
     },
   ];
 
-  /* ══════════════════════════════════════════════════════
-     ESCENARIOS — 10 pts por acierto, 5 escenarios = 50 pts
-     ══════════════════════════════════════════════════════ */
+  // ESCENARIOS — 10 pts por acierto, 5 escenarios = 50 pts/
   const escenarios = [
 
     /* ── EVENTO 1: La lluvia / Sócrates ── */
@@ -278,7 +271,7 @@
         { texto: 'Preguntas quién es',                           correcta: false },
       ],
       textoAcierto: 'Elegiste hablar. La lluvia no fue un obstáculo, sino la puerta de entrada a un encuentro histórico; ese hombre era Sócrates y en Tiempo y Vida, esa conversación se volvió un destello decisivo para Timit.',
-      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: 'Me llamo Sócrates, ¿Me conoces de algún lado, pequeño?', //EXTRACTO DEL LIBRO
     },
 
     /* ── EVENTO 2: El reloj viejo ── */
@@ -291,7 +284,7 @@
         { texto: 'Preguntas por qué es tan importante', correcta: false },
       ],
       textoAcierto: 'Mirarlo fue entenderlo. El reloj no era solo un objeto, era una advertencia. En el libro, el tiempo aparece como algo que debe ser respetado, no perseguido.',
-      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: 'El tiempo es valioso, y la vida depende de nuestras acciones, debes mantenerte consciente para lograr controlarla', //EXTRACTO DEL LIBRO
     },
 
     /* ── EVENTO 3: El cuaderno vacío ── */
@@ -304,7 +297,7 @@
         { texto: 'Pides ayuda',                     correcta: false },
       ],
       textoAcierto: 'Reescribir fue un pequeño sacrificio, pero también una victoria. En Tiempo y Vida, la escritura se vuelve una forma de disciplina, paciencia y crecimiento interior.',
-      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: 'Mi ortografia es horrible, escribí una pagina y entiendo la mitad.', //EXTRACTO DEL LIBRO
     },
 
     /* ── EVENTO 4: La discusión familiar ── */
@@ -317,7 +310,7 @@
         { texto: 'Intentas calmar el ambiente con una frase',  correcta: false },
       ],
       textoAcierto: 'Salir fue la respuesta de Timit; no para huir, sino para buscar aire, sentido y un camino propio dentro del conflicto.',
-      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: '¡Ya basta!! la luz del dia apenas nos acompaña, no es tiempo de discutir', //EXTRACTO DEL LIBRO
     },
 
     /* ── EVENTO 5: El fuego ── */
@@ -330,7 +323,7 @@
         { texto: 'Preguntas qué representa', correcta: false },
       ],
       textoAcierto: 'El fuego no solo calienta: enseña. En el libro, el abuelo lo usa como símbolo de reflexión, energía y tiempo que se consume.',
-      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: 'La hoguera parece estar débil, sus llamas quieren apagarse', //EXTRACTO DEL LIBRO
     },
 
   ];
