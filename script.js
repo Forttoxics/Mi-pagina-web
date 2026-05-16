@@ -231,6 +231,7 @@
 
 (function () {
 
+  /* ── Textos para respuesta INCORRECTA ── */
   const textosFallo = [
     'Tu elección abrió un nuevo camino en la vida de Timit.',
     'Tu reacción cambió la historia como la conocemos.',
@@ -238,78 +239,106 @@
     'La historia no coincide; una nueva línea temporal acaba de abrirse.',
   ];
 
+  /* ── Rangos de puntaje final ── */
+  const rangos = [
+    {
+      min: 50, max: 50,
+      titulo: 'Leyenda de Tiempo y Vida',
+      desc: 'Tu afinidad con Timit es única.',
+    },
+    {
+      min: 30, max: 40,
+      titulo: 'Viajero del Tiempo',
+      desc: 'Conoces bien el camino, aunque aún hay momentos por descubrir.',
+    },
+    {
+      min: 10, max: 20,
+      titulo: 'Aprendiz',
+      desc: 'Estás comenzando a comprender el mundo de Timit.',
+    },
+    {
+      min: 0, max: 0,
+      titulo: 'Tu línea temporal es única',
+      desc: 'Quizás tu historia aún no ha sido escrita.',
+    },
+  ];
+
+  /* ══════════════════════════════════════════════════════
+     ESCENARIOS — 10 pts por acierto, 5 escenarios = 50 pts
+     ══════════════════════════════════════════════════════ */
   const escenarios = [
 
     /* ── EVENTO 1: La lluvia / Sócrates ── */
     {
       escena: 'Estás herido bajo la lluvia. Una lámpara se enciende entre el agua. Un hombre de barba te observa con calma; parece misterioso, pero tranquilo.',
       opciones: [
-        { texto: 'Conversas con él',                        correcta: true  },
-        { texto: 'Te vas sin decir nada',                   correcta: false },
+        { texto: 'Conversas con él',                             correcta: true  },
+        { texto: 'Te vas sin decir nada',                        correcta: false },
         { texto: 'Agradeces la compañía, pero guardas silencio', correcta: false },
-        { texto: 'Preguntas quién es',                      correcta: false },
+        { texto: 'Preguntas quién es',                           correcta: false },
       ],
       textoAcierto: 'Elegiste hablar. La lluvia no fue un obstáculo, sino la puerta de entrada a un encuentro histórico; ese hombre era Sócrates y en Tiempo y Vida, esa conversación se volvió un destello decisivo para Timit.',
-      extracto: 'Me llamo Sócrates, ¿Me conoces de algún lado, pequeño?', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
     },
 
     /* ── EVENTO 2: El reloj viejo ── */
     {
       escena: 'Te detienes frente a un reloj viejo. Sientes que el tiempo pesa más de lo normal.',
       opciones: [
-        { texto: 'Lo observas con atención',        correcta: true  },
-        { texto: 'Lo ignoras y sigues caminando',   correcta: false },
-        { texto: 'Intentas arreglarlo',              correcta: false },
+        { texto: 'Lo observas con atención',           correcta: true  },
+        { texto: 'Lo ignoras y sigues caminando',      correcta: false },
+        { texto: 'Intentas arreglarlo',                correcta: false },
         { texto: 'Preguntas por qué es tan importante', correcta: false },
       ],
       textoAcierto: 'Mirarlo fue entenderlo. El reloj no era solo un objeto, era una advertencia. En el libro, el tiempo aparece como algo que debe ser respetado, no perseguido.',
-      extracto: 'el tiempo es valioso, y la vida depende de nuestras acciones, debes mantenerte consciente para lograr controlarla',
+      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
     },
 
     /* ── EVENTO 3: El cuaderno vacío ── */
     {
       escena: 'Tienes un cuaderno vacío. Quieres escribir algo, pero la caligrafía te traiciona.',
       opciones: [
-        { texto: 'Escribes de todos modos',          correcta: false },
-        { texto: 'Reescribes hasta que quede bien',  correcta: true  },
-        { texto: 'Cierras el cuaderno y lo dejas',   correcta: false },
-        { texto: 'Pides ayuda',                      correcta: false },
+        { texto: 'Escribes de todos modos',         correcta: false },
+        { texto: 'Reescribes hasta que quede bien', correcta: true  },
+        { texto: 'Cierras el cuaderno y lo dejas',  correcta: false },
+        { texto: 'Pides ayuda',                     correcta: false },
       ],
       textoAcierto: 'Reescribir fue un pequeño sacrificio, pero también una victoria. En Tiempo y Vida, la escritura se vuelve una forma de disciplina, paciencia y crecimiento interior.',
-      extracto: 'Mi ortografia es horrible, escribí una página, y entiendo la mitad', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
     },
 
     /* ── EVENTO 4: La discusión familiar ── */
     {
       escena: 'Escuchas una discusión en casa. La tensión pesa más que cualquier ruido.',
       opciones: [
-        { texto: 'Intervienes',                               correcta: false },
-        { texto: 'Te quedas callado',                         correcta: false },
-        { texto: 'Sales de la casa',                          correcta: true  },
-        { texto: 'Intentas calmar el ambiente con una frase', correcta: false },
+        { texto: 'Intervienes',                                correcta: false },
+        { texto: 'Te quedas callado',                          correcta: false },
+        { texto: 'Sales de la casa',                           correcta: true  },
+        { texto: 'Intentas calmar el ambiente con una frase',  correcta: false },
       ],
       textoAcierto: 'Salir fue la respuesta de Timit; no para huir, sino para buscar aire, sentido y un camino propio dentro del conflicto.',
-      extracto: '¡Ya basta!! la luz del dia apenas nos acomapaña, no es tiempo de discutir', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
     },
 
     /* ── EVENTO 5: El fuego ── */
     {
       escena: 'Un fuego arde frente a ti. Sientes que su luz responde al estado de tu mente.',
       opciones: [
-        { texto: 'Te acercas',                  correcta: false },
-        { texto: 'Lo contemplas de lejos',      correcta: true  },
-        { texto: 'Intentas apagarlo',           correcta: false },
-        { texto: 'Preguntas qué representa',    correcta: false },
+        { texto: 'Te acercas',               correcta: false },
+        { texto: 'Lo contemplas de lejos',   correcta: true  },
+        { texto: 'Intentas apagarlo',        correcta: false },
+        { texto: 'Preguntas qué representa', correcta: false },
       ],
       textoAcierto: 'El fuego no solo calienta: enseña. En el libro, el abuelo lo usa como símbolo de reflexión, energía y tiempo que se consume.',
-      extracto: 'La hoguera parece estar débil, sus llamas quieren apagarse', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
+      extracto: '', /* ← PON AQUÍ EL EXTRACTO DEL LIBRO */
     },
 
   ];
 
-  /*LÓGICA */
+    // LÓGICA //
 
   const iconoPuerta = '/Mi-pagina-web/assets/iconos/eventos/puerta.svg';
+  const PTS_ACIERTO = 10;
 
   const elEscena      = document.getElementById('evento-escena');
   const elPuertas     = document.getElementById('evento-puertas');
@@ -317,39 +346,65 @@
   const elResultado   = document.getElementById('evento-resultado');
   const elResTexto    = document.getElementById('evento-resultado-texto');
   const elExtracto    = document.getElementById('evento-extracto');
+  const elSiguiente   = document.getElementById('evento-siguiente');
+  const elFinal       = document.getElementById('evento-final');
+  const elPuntajeTxt  = document.getElementById('evento-puntaje-texto');
+  const elRangoTxt    = document.getElementById('evento-rango-texto');
+  const elRangoDesc   = document.getElementById('evento-rango-desc');
   const elReiniciar   = document.getElementById('evento-reiniciar');
+  const elContador    = document.getElementById('evento-contador');
+  const elPuntosLive  = document.getElementById('evento-puntos-live');
+
+  let cola    = [];   // escenarios mezclados pendientes
+  let actual  = 0;    // índice dentro de la cola (0-4)
+  let puntos  = 0;
 
   function shuffle(arr) {
     return [...arr].sort(() => Math.random() - 0.5);
   }
 
-  function cargarEscenario() {
-    const s = escenarios[Math.floor(Math.random() * escenarios.length)];
+  function iniciar() {
+    cola   = shuffle(escenarios);
+    actual = 0;
+    puntos = 0;
+    actualizarLive();
+    mostrarEscenario();
+
+    elFinal.classList.add('hidden');
+    elResultado.classList.add('hidden');
+    elIntro.style.display = '';
+  }
+
+  function actualizarLive() {
+    elContador.textContent   = `Momento ${actual + 1} de ${escenarios.length}`;
+    elPuntosLive.textContent = `⬡ ${puntos} pts`;
+  }
+
+  function mostrarEscenario() {
+    const s = cola[actual];
     elEscena.textContent = s.escena;
     elPuertas.innerHTML  = '';
 
-    const opcionesOrdenadas = shuffle(s.opciones);
-
-    opcionesOrdenadas.forEach(op => {
+    shuffle(s.opciones).forEach(op => {
       const btn = document.createElement('button');
       btn.className = 'puerta-btn';
-      btn.innerHTML = `
-        <img src="${iconoPuerta}" alt="Puerta">
-        <span>${op.texto}</span>
-      `;
-      btn.addEventListener('click', () => mostrarResultado(op, s));
+      btn.innerHTML = `<img src="${iconoPuerta}" alt="Puerta"><span>${op.texto}</span>`;
+      btn.addEventListener('click', () => elegir(op, s));
       elPuertas.appendChild(btn);
     });
 
-    elIntro.style.display     = '';
+    actualizarLive();
+    elIntro.style.display = '';
     elResultado.classList.add('hidden');
   }
 
-  function mostrarResultado(opcion, escenario) {
+  function elegir(opcion, escenario) {
     elIntro.style.display = 'none';
 
     if (opcion.correcta) {
-      elResTexto.textContent = escenario.textoAcierto;
+      puntos += PTS_ACIERTO;
+      elPuntosLive.textContent = `⬡ ${puntos} pts`;
+      elResTexto.textContent   = escenario.textoAcierto;
 
       if (escenario.extracto && escenario.extracto.trim() !== '') {
         elExtracto.textContent = escenario.extracto;
@@ -362,11 +417,40 @@
       elExtracto.classList.add('hidden');
     }
 
+    /* Texto del botón según si es el último */
+    const esUltimo = actual === escenarios.length - 1;
+    elSiguiente.textContent = esUltimo ? '★ Ver resultado final' : '→ Siguiente momento';
+
     elResultado.classList.remove('hidden');
   }
 
-  elReiniciar.addEventListener('click', cargarEscenario);
+  elSiguiente.addEventListener('click', () => {
+    actual++;
+    if (actual >= escenarios.length) {
+      mostrarFinal();
+    } else {
+      elResultado.classList.add('hidden');
+      mostrarEscenario();
+    }
+  });
 
-  cargarEscenario();
+  function mostrarFinal() {
+    elResultado.classList.add('hidden');
 
+    const rango = rangos.find(r => puntos >= r.min && puntos <= r.max)
+                || rangos[rangos.length - 1];
+
+    elPuntajeTxt.textContent = `${puntos} / ${escenarios.length * PTS_ACIERTO}`;
+    elRangoTxt.textContent   = rango.titulo;
+    elRangoDesc.textContent  = rango.desc;
+
+    elFinal.classList.remove('hidden');
+  }
+
+  elReiniciar.addEventListener('click', iniciar);
+
+  /* Arranque */
+  iniciar();
+
+})();
 })();
