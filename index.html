@@ -150,20 +150,41 @@
 </section>
 
 <section class="glass" id="evento-section">
-  <div id="evento-intro">
+
+  <!-- Cabecera con progreso y puntos en vivo -->
+  <div id="evento-header">
     <h2 id="evento-titulo">⟁ El Momento Decisivo</h2>
+    <div id="evento-progreso">
+      <span id="evento-contador">Momento 1 de 5</span>
+      <span id="evento-puntos-live">⬡ 0 pts</span>
+    </div>
+  </div>
+
+  <!-- Escena + puertas -->
+  <div id="evento-intro">
     <p id="evento-escena" class="evento-escena"></p>
     <div id="evento-puertas" class="evento-puertas"></div>
   </div>
 
+  <!-- Resultado por escenario -->
   <div id="evento-resultado" class="evento-resultado hidden">
     <div id="evento-resultado-inner">
       <img src="/Mi-pagina-web/assets/iconos/eventos/puerta.svg" alt="Puerta" class="evento-puerta-icono" />
       <p id="evento-resultado-texto" class="evento-resultado-texto"></p>
       <blockquote id="evento-extracto" class="evento-extracto hidden"></blockquote>
-      <button id="evento-reiniciar" class="evento-reiniciar-btn">↩ Vivir otro momento</button>
+      <button id="evento-siguiente" class="evento-reiniciar-btn">→ Siguiente momento</button>
     </div>
   </div>
+
+  <!-- Pantalla final -->
+  <div id="evento-final" class="evento-final hidden">
+    <img src="/Mi-pagina-web/assets/iconos/puntos/reloj.svg" alt="Puntaje" class="evento-reloj-icono" />
+    <p id="evento-puntaje-texto" class="evento-puntaje-numero"></p>
+    <p id="evento-rango-texto" class="evento-rango"></p>
+    <p id="evento-rango-desc" class="evento-rango-desc"></p>
+    <button id="evento-reiniciar" class="evento-reiniciar-btn">↩ Volver a jugar</button>
+  </div>
+
 </section>
   </main>
 
