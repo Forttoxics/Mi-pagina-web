@@ -439,13 +439,35 @@ h1.done::after{
   gap: 18px;
 }
 
+/* ── Cabecera con progreso ── */
+#evento-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 #evento-titulo {
-  margin: 0 0 12px;
+  margin: 0;
   font-size: 1.15rem;
   color: var(--accent2);
   letter-spacing: .05em;
 }
 
+#evento-progreso {
+  display: flex;
+  gap: 14px;
+  font-size: .82rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+#evento-puntos-live {
+  color: var(--accent);
+}
+
+/* ── Escena ── */
 .evento-escena {
   color: var(--muted);
   line-height: 1.7;
@@ -493,7 +515,7 @@ h1.done::after{
   box-shadow: 0 8px 24px rgba(0,0,0,.3);
 }
 
-/* ── Resultado ── */
+/* ── Resultado por escenario ── */
 .evento-resultado {
   animation: fadeUp .55s ease forwards;
   text-align: center;
@@ -530,7 +552,6 @@ h1.done::after{
   text-align: center;
 }
 
-/* Extracto del libro */
 .evento-extracto {
   border-left: 3px solid var(--accent);
   margin: 4px auto;
@@ -547,7 +568,6 @@ h1.done::after{
 
 .evento-extracto.hidden { display: none; }
 
-/* Etiqueta "Del libro" */
 .evento-extracto::before {
   content: '📖 Del libro:';
   display: block;
@@ -559,7 +579,7 @@ h1.done::after{
   font-weight: 700;
 }
 
-/* Botón reiniciar */
+/* ── Botones ── */
 .evento-reiniciar-btn {
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.14);
@@ -576,6 +596,55 @@ h1.done::after{
 .evento-reiniciar-btn:hover {
   background: rgba(255,255,255,.16);
   transform: translateY(-2px);
+}
+
+/* ── Pantalla final de puntaje ── */
+.evento-final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  animation: fadeUp .6s ease forwards;
+}
+
+.evento-final.hidden { display: none; }
+
+.evento-reloj-icono {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 16px var(--accent2));
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+.evento-puntaje-numero {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--accent2);
+  letter-spacing: .04em;
+}
+
+.evento-rango {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--accent);
+}
+
+.evento-rango-desc {
+  font-size: .88rem;
+  color: var(--muted);
+  margin: 0;
+  max-width: 42ch;
+  line-height: 1.6;
+}
+
+/* ── Animación compartida ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 500px) {
